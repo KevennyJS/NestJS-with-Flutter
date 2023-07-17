@@ -14,8 +14,9 @@ export class AuthGuard implements CanActivate {
 
   canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<Request>();
-    const [prefix, token] = request.headers.authorization?.split(' ');
 
+    if(!request.headers.authorization) throw new UnauthorizedException();
+    const [prefix, token] = request.headers.authorization?.split(' ');
     if(!token) throw new UnauthorizedException();
 
     return this.firebase.verifyToken(token);

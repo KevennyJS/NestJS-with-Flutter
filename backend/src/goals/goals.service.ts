@@ -5,7 +5,7 @@ import { PrismaService } from 'src/common/prisma/prisma.service';
 @Injectable()
 export class GoalsService {
 
-  constructor(private readonly prisma: PrismaService){}
+  constructor(private readonly prisma: PrismaService) { }
 
   create(createGoalDto: Prisma.GoalCreateInput) {
     return this.prisma.goal.create({
@@ -25,22 +25,25 @@ export class GoalsService {
   findAll() {
     return this.prisma.goal.findMany({
       include: {
-        category: true
+        category: true,
       }
     });
   }
 
   findOne(id: number) {
     return this.prisma.goal.findUnique({
-      where:{
+      where: {
         id: id
+      },
+      include: {
+        category: true,
       }
     });
   }
 
   remove(id: number) {
     return this.prisma.goal.delete({
-      where:{
+      where: {
         id: id
       }
     });

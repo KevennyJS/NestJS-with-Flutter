@@ -1,7 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { GoalsService } from './goals.service';
 import { Prisma } from '@prisma/client';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("goals")
 @Controller('goals')
 export class GoalsController {
   constructor(private readonly goalsService: GoalsService) {}

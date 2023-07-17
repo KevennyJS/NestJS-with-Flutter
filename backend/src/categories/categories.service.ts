@@ -30,6 +30,9 @@ export class CategoriesService {
     return this.prisma.category.findUnique({
       where:{
         id: id
+      },
+      include: {
+        goals: true
       }
     });
   }
