@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from "@nestjs/common";
 import { GoalsService } from './goals.service';
 import { Prisma } from '@prisma/client';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from "../auth/guards/auth.guard";
 
+@UseGuards(AuthGuard)
 @ApiTags("goals")
 @Controller('goals')
 export class GoalsController {

@@ -4,12 +4,11 @@ import { AppService } from './app.service';
 import { GoalsModule } from './goals/goals.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CommonModule } from './common/common.module';
-import { FirebaseService } from './auth/firebase/firebase.service';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [GoalsModule, CategoriesModule, CommonModule, AuthModule],
+  imports: [AuthModule,GoalsModule, CategoriesModule, CommonModule],
   controllers: [AppController],
-  providers: [AppService, FirebaseService],
+  providers: [AppService],
 })
 export class AppModule {}

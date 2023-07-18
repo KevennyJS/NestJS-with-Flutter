@@ -1,2 +1,4 @@
 
 backend/.env
+
+backend/src/auth/FirebaseAccount.json

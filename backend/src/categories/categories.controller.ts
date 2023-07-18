@@ -4,6 +4,7 @@ import { Prisma } from '@prisma/client';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { ApiTags } from '@nestjs/swagger';
 
+@UseGuards(AuthGuard)
 @ApiTags("categories")
 @Controller('categories')
 export class CategoriesController {
@@ -14,7 +15,6 @@ export class CategoriesController {
     return this.categoriesService.create(createCategoryDto);
   }
 
-  @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.categoriesService.findAll();
